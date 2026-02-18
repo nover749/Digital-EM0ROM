@@ -6,254 +6,241 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>EM0ROM CONSOLE</title>
 
+<!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00ff66">
+
 <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAMa0vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARERERERERAQAAAAAAAAARAAAAAAAAAREAAAAAAAAAEQAAEQEQAAERAQEAAAEBABEBAREREQEBEQEREREREQARABEBEQEQAREAAREREQAAEQAAEAAQAAERAAEAAAEAABEAAAAAAAABEQAAAAAAAAARAAAAAAAAABARERERERERCAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA" rel="icon" type="image/x-icon">
 
 <style>
 body {
-margin: 0;
-background: #000;
-color: #00ff66;
-font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  background: #000;
+  color: #00ff66;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 /* Top bar */
 .topbar {
-position: fixed;
-top: 0;
-right: 0;
-width: 100%;
-height: 60px;
-background: #000;
-border-bottom: 2px solid #00ff66;
-display: flex;
-justify-content: flex-end;
-align-items: center;
-padding-right: 20px;
-z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  background: #000;
+  border-bottom: 2px solid #00ff66;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+  z-index: 1000;
 }
 
 .menu-icon { width: 40px; cursor: pointer; }
-.menu-icon div {
-width: 100%;
-height: 5px;
-background: #00ff66;
-margin: 6px 0;
-}
+.menu-icon div { width: 100%; height: 5px; background: #00ff66; margin: 6px 0; }
 
 .dropdown {
-position: fixed;
-top: 60px;
-right: 0;
-width: 180px;
-background: #000;
-border-left: 2px solid #00ff66;
-border-bottom: 2px solid #00ff66;
-display: none;
-z-index: 999;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 180px;
+  background: #000;
+  border-left: 2px solid #00ff66;
+  border-bottom: 2px solid #00ff66;
+  display: none;
+  z-index: 999;
 }
 .dropdown a {
-display: block;
-padding: 15px;
-color: #00ff66;
-text-decoration: none;
-border-bottom: 1px solid #00ff66;
+  display: block;
+  padding: 15px;
+  color: #00ff66;
+  text-decoration: none;
+  border-bottom: 1px solid #00ff66;
 }
 .dropdown a:hover { background: #003300; }
 
+/* MAIN CONTENT */
 .content {
-margin-top: 100px;
-display: flex;
-justify-content: space-around;
-align-items: center;
-padding: 40px;
-min-height: 320px;
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px;
+  min-height: 320px;
 }
 
-.left-side {
-display: flex;
-flex-direction: column;
-justify-content: center;
-}
-
+.left-side { display: flex; flex-direction: column; justify-content: center; }
 .left-side h1 {
-font-size: 48px;
-margin-bottom: 10px;
-text-shadow: 0 0 10px #00ff66;
+  font-size: 48px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #00ff66;
 }
 
 .description {
-font-size: 18px;
-max-width: 350px;
-margin-bottom: 25px;
-color: #66ffb2;
-line-height: 1.4;
+  font-size: 18px;
+  max-width: 350px;
+  margin-bottom: 25px;
+  color: #66ffb2;
+  line-height: 1.4;
 }
 
 .start-btn {
-padding: 15px 40px;
-background: #00ff66;
-color: #000;
-font-size: 22px;
-border-radius: 6px;
-font-weight: bold;
-cursor: pointer;
-border: none;
+  padding: 15px 40px;
+  background: #00ff66;
+  color: #000;
+  font-size: 22px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
 }
 .start-btn:hover { background: #33ff99; }
 
-.right-side img {
-width: 260px;
-filter: drop-shadow(0 0 10px #00ff66);
-}
+.right-side img { width: 260px; filter: drop-shadow(0 0 10px #00ff66); }
 
 /* IMAGE RING */
 .video-section{
-width:100%;
-display:flex;
-justify-content:center;
-margin-top:40px;
-perspective:1400px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin-top:40px;
+  perspective:1400px;
 }
 
 .scene{
-width:520px;
-height:320px;
-position:relative;
-transform-style:preserve-3d;
-transform:rotateZ(18deg) rotateX(12deg) scale(0.95);
-cursor: grab;
+  width:520px;
+  height:320px;
+  position:relative;
+  transform-style:preserve-3d;
+  transform:rotateZ(18deg) rotateX(12deg) scale(0.95);
+  cursor: grab;
 }
 
 .ring{
-width:100%;
-height:100%;
-position:absolute;
-transform-style:preserve-3d;
+  width:100%;
+  height:100%;
+  position:absolute;
+  transform-style:preserve-3d;
 }
 
-/* FULL INNER DRUM */
+/* FULL INNER DRUM FILLED */
 .inner-fill{
-position:absolute;
-width:420px;
-height:420px;
-background:#000;
-border-radius:50%;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%) rotateY(65deg);
-z-index:-1;
+  position:absolute;
+  width:420px;
+  height:420px;
+  background:#000; /* fully black inside */
+  border-radius:50%;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotateY(65deg);
+  z-index:-1;
 }
 
 .orbit-line{
-position:absolute;
-width:420px;
-height:420px;
-border:2px solid rgba(0,255,120,0.25);
-border-radius:50%;
-left:50%;
-top:50%;
-transform:translate(-50%, -50%) rotateY(65deg);
+  position:absolute;
+  width:420px;
+  height:420px;
+  border:2px solid rgba(0,255,120,0.25);
+  border-radius:50%;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%) rotateY(65deg);
 }
 
 .panel{
-position:absolute;
-width:180px;
-height:105px;
-left:50%;
-top:50%;
-margin:-52px 0 0 -90px;
-border-radius:10px;
-overflow:hidden;
-border:2px solid rgba(0,255,120,0.25);
-background:#001a0d;
+  position:absolute;
+  width:180px;
+  height:105px;
+  left:50%;
+  top:50%;
+  margin:-52px 0 0 -90px;
+  border-radius:10px;
+  overflow:hidden;
+  border:2px solid rgba(0,255,120,0.25);
+  background:#001a0d;
 }
 
 .panel img{
-width:100%;
-height:100%;
-object-fit:cover;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 #gameFrame {
-width: 100%;
-height: calc(100vh - 60px);
-border: none;
-display: none;
-margin-top: 60px;
+  width: 100%;
+  height: calc(100vh - 60px);
+  border: none;
+  display: none;
+  margin-top: 60px;
 }
 </style>
 </head>
 <body>
 
 <div class="topbar">
-<div class="menu-icon" onclick="toggleMenu()">
-<div></div><div></div><div></div>
-</div>
+  <div class="menu-icon" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
 </div>
 
 <div class="dropdown" id="dropdownMenu">
-<a href="#" onclick="goHome()">Main Page</a>
+  <a href="#" onclick="goHome()">Main Page</a>
 </div>
 
 <div class="content" id="mainContent">
-<div class="left-side">
-<h1>EM0ROM V3.1.0</h1>
-<div class="description">
-Welcome to EM0ROM — your digital console in the browser. Pure retro and modern gaming. (ROMs required.)
-</div>
-<button class="start-btn" onclick="startGame()">Start Playing</button>
-</div>
-
-<div class="right-side">
-<img src="https://www.favicon.cc/logo3d/1022412.png">
-</div>
+  <div class="left-side">
+    <h1>EM0ROM V3.1.0</h1>
+    <div class="description">
+      Welcome to EM0ROM — your digital console in the browser. Pure retro and modern gaming. (ROMs required.)
+    </div>
+    <button class="start-btn" onclick="startGame()">Start Playing</button>
+  </div>
+  <div class="right-side">
+    <img src="https://www.favicon.cc/logo3d/1022412.png">
+  </div>
 </div>
 
 <div class="video-section">
-<div class="scene" id="scene">
-
-<div class="inner-fill"></div>
-<div class="orbit-line"></div>
-
-<div class="ring" id="ring">
-
-<div class="panel"><img src="https://upload.wikimedia.org/wikipedia/en/e/e9/Super_Mario_64.png"></div>
-<div class="panel"><img src="https://i.ytimg.com/vi/d8OMec763vA/sddefault.jpg"></div>
-<div class="panel"><img src="https://i.ytimg.com/vi/Asv9JcEY_6s/maxresdefault.jpg"></div>
-<div class="panel"><img src="https://images.launchbox-app.com//59bc3404-2b83-44f3-a8c2-749bc7dc6807.png"></div>
-<div class="panel"><img src="https://silverballmuseum.com/wp-content/uploads/2016/06/pac-man.jpg"></div>
-<div class="panel"><img src="https://i.ytimg.com/vi/a_ppMVWwztU/maxresdefault.jpg"></div>
-
-</div>
-</div>
+  <div class="scene" id="scene">
+    <div class="inner-fill"></div>
+    <div class="orbit-line"></div>
+    <div class="ring" id="ring">
+      <div class="panel"><img src="https://upload.wikimedia.org/wikipedia/en/e/e9/Super_Mario_64.png"></div>
+      <div class="panel"><img src="https://i.ytimg.com/vi/d8OMec763vA/sddefault.jpg"></div>
+      <div class="panel"><img src="https://i.ytimg.com/vi/Asv9JcEY_6s/maxresdefault.jpg"></div>
+      <div class="panel"><img src="https://images.launchbox-app.com//59bc3404-2b83-44f3-a8c2-749bc7dc6807.png"></div>
+      <div class="panel"><img src="https://silverballmuseum.com/wp-content/uploads/2016/06/pac-man.jpg"></div>
+      <div class="panel"><img src="https://i.ytimg.com/vi/a_ppMVWwztU/maxresdefault.jpg"></div>
+    </div>
+  </div>
 </div>
 
 <iframe id="gameFrame"></iframe>
 
 <script>
 function toggleMenu(){
-const menu=document.getElementById("dropdownMenu");
-menu.style.display=menu.style.display==="block"?"none":"block";
+  const menu=document.getElementById("dropdownMenu");
+  menu.style.display=menu.style.display==="block"?"none":"block";
 }
 
 function startGame(){
-document.getElementById("mainContent").style.display="none";
-document.querySelector(".video-section").style.display="none";
-const frame=document.getElementById("gameFrame");
-frame.src="https://nover749.github.io/EM0ROM-0142";
-frame.style.display="block";
+  document.getElementById("mainContent").style.display="none";
+  document.querySelector(".video-section").style.display="none";
+  const frame=document.getElementById("gameFrame");
+  frame.src="https://nover749.github.io/EM0ROM-0142";
+  frame.style.display="block";
 }
 
 function goHome(){
-document.getElementById("gameFrame").style.display="none";
-document.getElementById("mainContent").style.display="flex";
-document.querySelector(".video-section").style.display="flex";
+  document.getElementById("gameFrame").style.display="none";
+  document.getElementById("mainContent").style.display="flex";
+  document.querySelector(".video-section").style.display="flex";
 }
 
+/* SPINNING IMAGE RING */
 const ring=document.getElementById('ring');
 const panels=document.querySelectorAll('.panel');
 const scene=document.getElementById('scene');
-
 const total=panels.length;
 const radius=300;
 let rotationY=0;
@@ -261,38 +248,51 @@ let autoSpeed=0.15;
 let isDragging=false;
 
 function setupRing(){
-const angleStep=360/total;
-panels.forEach((panel,i)=>{
-panel.style.transform=`rotateY(${i*angleStep}deg) translateZ(${radius}px)`;
-});
+  const angleStep=360/total;
+  panels.forEach((panel,i)=>{
+    panel.style.transform=`rotateY(${i*angleStep}deg) translateZ(${radius}px)`;
+  });
 }
 setupRing();
 
 function animate(){
-if(!isDragging){
-rotationY+=autoSpeed;
-}
-ring.style.transform=`rotateY(${rotationY}deg)`;
-requestAnimationFrame(animate);
+  if(!isDragging){
+    rotationY+=autoSpeed;
+  }
+  ring.style.transform=`rotateY(${rotationY}deg)`;
+  requestAnimationFrame(animate);
 }
 animate();
 
 let lastX=0;
-
 scene.addEventListener('mousedown',(e)=>{
-isDragging=true;
-lastX=e.clientX;
-scene.style.cursor="grabbing";
+  isDragging=true;
+  lastX=e.clientX;
+  scene.style.cursor="grabbing";
 });
 window.addEventListener('mouseup',()=>{
-isDragging=false;
-scene.style.cursor="grab";
+  isDragging=false;
+  scene.style.cursor="grab";
 });
 window.addEventListener('mousemove',(e)=>{
-if(!isDragging) return;
-const delta=e.clientX-lastX;
-rotationY+=delta*0.4;
-lastX=e.clientX;
+  if(!isDragging) return;
+  const delta=e.clientX-lastX;
+  rotationY+=delta*0.4;
+  lastX=e.clientX;
+});
+
+/* PWA REGISTER */
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+  .then(() => console.log('Service Worker Registered'))
+  .catch(err => console.error(err));
+}
+
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  setTimeout(() => { if (deferredPrompt) deferredPrompt.prompt(); }, 2000);
 });
 </script>
 
