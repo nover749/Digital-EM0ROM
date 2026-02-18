@@ -60,7 +60,6 @@ border-bottom: 1px solid #00ff66;
 }
 .dropdown a:hover { background: #003300; }
 
-/* MAIN CONTENT */
 .content {
 margin-top: 100px;
 display: flex;
@@ -132,6 +131,19 @@ position:absolute;
 transform-style:preserve-3d;
 }
 
+/* FULL INNER DRUM */
+.inner-fill{
+position:absolute;
+width:420px;
+height:420px;
+background:#000;
+border-radius:50%;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) rotateY(65deg);
+z-index:-1;
+}
+
 .orbit-line{
 position:absolute;
 width:420px;
@@ -193,21 +205,24 @@ Welcome to EM0ROM — your digital console in the browser. Pure retro and modern
 </div>
 
 <div class="right-side">
-<img src="https://www.favicon.cc/logo3d/1022412.png" alt="Logo">
+<img src="https://www.favicon.cc/logo3d/1022412.png">
 </div>
 </div>
 
 <div class="video-section">
 <div class="scene" id="scene">
+
+<div class="inner-fill"></div>
 <div class="orbit-line"></div>
+
 <div class="ring" id="ring">
 
-<div class="panel"><img src="https://upload.wikimedia.org/wikipedia/en/e/e9/Super_Mario_64.png" alt="Image 1"></div>
-<div class="panel"><img src="https://i.ytimg.com/vi/d8OMec763vA/sddefault.jpg" alt="Image 2"></div>
-<div class="panel"><img src="https://i.ytimg.com/vi/Asv9JcEY_6s/maxresdefault.jpg" alt="Image 3"></div>
-<div class="panel"><img src="https://images.launchbox-app.com//59bc3404-2b83-44f3-a8c2-749bc7dc6807.png" alt="Image 4"></div>
-<div class="panel"><img src="https://silverballmuseum.com/wp-content/uploads/2016/06/pac-man.jpg" alt="Image 5"></div>
-<div class="panel"><img src="https://i.ytimg.com/vi/a_ppMVWwztU/maxresdefault.jpg" alt="Image 6"></div>
+<div class="panel"><img src="https://upload.wikimedia.org/wikipedia/en/e/e9/Super_Mario_64.png"></div>
+<div class="panel"><img src="https://i.ytimg.com/vi/d8OMec763vA/sddefault.jpg"></div>
+<div class="panel"><img src="https://i.ytimg.com/vi/Asv9JcEY_6s/maxresdefault.jpg"></div>
+<div class="panel"><img src="https://images.launchbox-app.com//59bc3404-2b83-44f3-a8c2-749bc7dc6807.png"></div>
+<div class="panel"><img src="https://silverballmuseum.com/wp-content/uploads/2016/06/pac-man.jpg"></div>
+<div class="panel"><img src="https://i.ytimg.com/vi/a_ppMVWwztU/maxresdefault.jpg"></div>
 
 </div>
 </div>
@@ -235,7 +250,6 @@ document.getElementById("mainContent").style.display="flex";
 document.querySelector(".video-section").style.display="flex";
 }
 
-/* AUTO SPIN IMAGE RING */
 const ring=document.getElementById('ring');
 const panels=document.querySelectorAll('.panel');
 const scene=document.getElementById('scene');
